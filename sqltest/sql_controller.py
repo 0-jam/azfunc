@@ -16,6 +16,7 @@ def establish_connection():
     return cnxn.cursor()
 
 
+# This SQL demo function only works for Azure SQL database's sample data
 def show_sql():
     cursor = establish_connection()
     cursor.execute("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName FROM [SalesLT].[ProductCategory] pc JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid")
