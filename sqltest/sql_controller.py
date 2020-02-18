@@ -11,26 +11,24 @@ SQL_DRIVER = '{ODBC Driver 17 for SQL Server}'
 
 
 def establish_connection():
-    cnxn = pyodbc.connect('DRIVER=' + SQL_DRIVER + ';SERVER=' + DB_ENDPOINT + ';PORT=1433;DATABASE=' + DB_NAME + ';UID=' + DB_USERNAME + ';PWD=' + DB_PASSWORD)
-
-    return cnxn.cursor()
+    return pyodbc.connect('DRIVER=' + SQL_DRIVER + ';SERVER=' + DB_ENDPOINT + ';PORT=1433;DATABASE=' + DB_NAME + ';UID=' + DB_USERNAME + ';PWD=' + DB_PASSWORD)
 
 
 # This SQL demo function only works for Azure SQL database's sample data
 def show_sql():
-    cursor = establish_connection()
+    connection = establish_connection()
+    cursor = connection.cursor()
+
     cursor.execute("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName FROM [SalesLT].[ProductCategory] pc JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid")
-    row = cursor.fetchone()
+    rows = cursor.fetchall()
 
-    rows = []
-
-    while row:
-        rows.append(str(row[0]) + " " + str(row[1]))
-        row = cursor.fetchone()
-
-    return rows
+    return [str(row[0]) + ' ' + str(row[1]) for row in rows]
 
 
 def exec_sql(query):
-    cursor = establish_connection()
+    connection = establish_connection()
+    cursor = connection.cursor()
+
     cursor.execute(query)
+
+    connection.commit()
