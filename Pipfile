@@ -9,6 +9,7 @@ autopep8 = "*"
 
 [packages]
 azure-functions = "*"
+pyodbc = "*"
 
 [requires]
 python_version = "3.7"
