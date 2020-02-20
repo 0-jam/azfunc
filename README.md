@@ -12,7 +12,6 @@
    1. [Setting environment variables locally](#setting-environment-variables-locally)
       1. [(Optional) Setting environment variables for Python interactive shell](#optional-setting-environment-variables-for-python-interactive-shell)
 1. [Usage](#usage)
-   1. [HttpTrigger](#httptrigger)
    1. [azmonkeygen](#azmonkeygen)
    1. [sqltest](#sqltest)
 
@@ -31,8 +30,8 @@
     - More information at [pypa/pyenv](https://github.com/pypa/pipenv)
 1. Set local Python version by running `$ pyenv local 3.7.6`
 1. Initialize pipenv with `$ pipenv --python $(which python)`
-1. Enter your new environment by running `$ pipenv shell`
 1. Install packages by running `$ pipenv install`
+1. Enter your new environment by running `$ pipenv shell`
 1. Install Azure Functions Core Tools
     - [Azure/azure-functions-core-tools#installing](https://github.com/Azure/azure-functions-core-tools#installing)
     - In Arch Linux, install `azure-functions-core-tools-bin` via AUR
@@ -113,24 +112,6 @@ The root URL is `https://<your_application>.azurewebsites.net/api` or `http://lo
 
 After functions has been deployed, it can be accessed with the following requests:
 
-### HttpTrigger
-
-It is the same as the sample code.
-
-`GET` `/httptrigger?name=jam`
-
-It can be also `POST` a JSON
-
-```json
-{
-    "name": "jam"
-}
-```
-
-It returns
-
-> Hello jam!
-
 ### azmonkeygen
 
 Based on: [0-jam/sort_algorythms](https://github.com/0-jam/sort_algorythms)/monkey_generator.py
@@ -139,10 +120,12 @@ Based on: [0-jam/sort_algorythms](https://github.com/0-jam/sort_algorythms)/monk
 
 It returns random strings such as:
 
-> 9A'g0%G)?[\oPAzeqyEnty%tr0}d~iNYa`JtlZb::pQ.ZI1~Uh/r"\xlmp<p\&]~:o>3Ft:1m
->
-> 1dB	.P^Rh7(w.7R/Wn)jN|0H~szgi)r |d7p
-> BFAr#- lqkh?G9\S:{`OUg[P_E_[lML.:	$MxEEJcD6AHXk1StI76 Ox)?C@-qDAWY"hW'Tet:u\4 k8k>)7^qk
+```
+9A'g0%G)?[\oPAzeqyEnty%tr0}d~iNYa`JtlZb::pQ.ZI1~Uh/r"\xlmp<p\&]~:o>3Ft:1m
+
+1dB	.P^Rh7(w.7R/Wn)jN|0H~szgi)r |d7p
+BFAr#- lqkh?G9\S:{`OUg[P_E_[lML.:	$MxEEJcD6AHXk1StI76 Ox)?C@-qDAWY"hW'Tet:u\4 k8k>)7^qk
+```
 
 ### sqltest
 
