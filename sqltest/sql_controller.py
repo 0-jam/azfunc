@@ -1,6 +1,7 @@
 import os
 
 import pyodbc
+import json
 
 ENV = os.environ
 DB_ENDPOINT = ENV.get('SQL_DB_ENDPOINT')
@@ -14,13 +15,21 @@ def establish_connection():
     return pyodbc.connect('DRIVER=' + SQL_DRIVER + ';SERVER=' + DB_ENDPOINT + ';PORT=1433;DATABASE=' + DB_NAME + ';UID=' + DB_USERNAME + ';PWD=' + DB_PASSWORD)
 
 
+def rows2json(rows):
+    return json.dumps([tuple(row) for row in rows], ensure_ascii=False)
+
+
 def exec_sql(query):
     connection = establish_connection()
     cursor = connection.cursor()
 
     cursor.execute(query)
-    rows = cursor.fetchall()
+
+    try:
+        rows = cursor.fetchall()
+    except pyodbc.ProgrammingError:
+        rows = cursor.rowcount
 
     connection.commit()
 
-    return [str(row[0]) + ' ' + str(row[1]) for row in rows]
+    return rows2json(rows)

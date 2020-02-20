@@ -18,7 +18,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             query = req_body.get('query')
 
     if query:
-        return func.HttpResponse(format(exec_sql(query)))
+        return func.HttpResponse(format(exec_sql(query)), mimetype='application/json')
     else:
         return func.HttpResponse(
             "Please pass a SQL query on the query string or in the request body",
