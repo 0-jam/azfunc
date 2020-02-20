@@ -30,5 +30,8 @@ def exec_sql(query):
     cursor = connection.cursor()
 
     cursor.execute(query)
+    ret = cursor.fetchall()
 
     connection.commit()
+
+    return ret
