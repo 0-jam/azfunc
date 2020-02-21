@@ -27,9 +27,12 @@ def exec_sql(query):
 
     try:
         rows = cursor.fetchall()
+        result_json = rows2json(rows)
     except pyodbc.ProgrammingError:
         rows = cursor.rowcount
+        result_json = json.dumps("affected {} rows".format(cursor.rowcount))
 
-    connection.commit()
+    cursor.close()
+    connection.close()
 
-    return rows2json(rows)
+    return result_json
