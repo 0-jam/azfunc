@@ -129,10 +129,7 @@ BFAr#- lqkh?G9\S:{`OUg[P_E_[lML.:	$MxEEJcD6AHXk1StI76 Ox)?C@-qDAWY"hW'Tet:u\4 k
 
 ### sqltest
 
-`POST` a JSON to `/sqltest`
-
-```json
-{
-    "query": "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName FROM [SalesLT].[ProductCategory] pc JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid"
-}
-```
+1. [Acquire API `_master` key](https://docs.microsoft.com/en-us/azure/azure-functions/functions-manually-run-non-http#get-the-functions-master-key) for your application
+1. `POST` to `/sqltest` with these headers:
+    - `x-functions-key`: Your function's `_master` key
+    - `Content-Type`: `application/json`
