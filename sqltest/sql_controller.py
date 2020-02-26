@@ -19,11 +19,11 @@ def rows2json(rows):
     return json.dumps([tuple(row) for row in rows], ensure_ascii=False)
 
 
-def exec_sql(query):
+def exec_sql():
     connection = establish_connection()
     cursor = connection.cursor()
 
-    cursor.execute(query)
+    cursor.execute("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName FROM [SalesLT].[ProductCategory] pc JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid")
 
     try:
         rows = cursor.fetchall()
