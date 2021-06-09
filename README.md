@@ -14,7 +14,7 @@
         1. [(Optional) Setting environment variables for Python interactive shell](#optional-setting-environment-variables-for-python-interactive-shell)
 1. [Usage](#usage)
     1. [azmonkeygen](#azmonkeygen)
-    1. [sqltest](#sqltest)
+    1. [sqlcontroller](#sqlcontroller)
 
 ---
 
@@ -26,7 +26,7 @@
 
 1. Install pyenv and run `$ pyenv install 3.9.5`
     - More information at [pypa/pyenv](https://github.com/pypa/pipenv)
-1. Set local Python version by running `$ pyenv local 3.7.6`
+1. Set local Python version by running `$ pyenv local 3.9.5`
 1. Initialize pipenv with `$ pipenv --python $(which python)`
 1. Install packages by running `$ pipenv install`
 1. Enter your new environment by running `$ pipenv shell`
@@ -96,18 +96,18 @@ SQL_DB_PASSWORD='<Login password for your database>'
 ... and here is how to use:
 
 ```
-$ python
-Python 3.7.6 (default, Feb 13 2020, 16:42:15)
-[GCC 9.2.1 20200130] on linux
+% pipenv run python
+Loading .env environment variables...
+Python 3.9.5 (v3.9.5:0a7dcbdb13, May  3 2021, 13:17:02)
+[Clang 6.0 (clang-600.0.57)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import settings
 >>> import os
 >>> os.environ.get('SQL_DB_USERNAME')
 'jam'
->>> from sqltest.sql_controller import show_sql
->>> show_sql()
-['Road Frames HL Road Frame - Black, 58', 'Road Frames HL Road Frame - Red, 58', ...]
->>>
+>>> from sqlcontroller.sql_controller import exec_sql
+>>> exec_sql()
+'[["Road Frames", "HL Road Frame - Black, 58"], ["Road Frames", "HL Road Frame - Red, 58"], ["Helmets", "Sport-100 Helmet, Red"], ["Helmets", "Sport-100 Helmet, Black"], ["Socks", "Mountain Bike Socks, M"], ["Socks", "Mountain Bike Socks, L"], ["Helmets", "Sport-100 Helmet, Blue"], ["Caps", "AWC Logo Cap"], ["Jerseys", "Long-Sleeve Logo Jersey, S"], ["Jerseys", "Long-Sleeve Logo Jersey, M"], ["Jerseys", "Long-Sleeve Logo Jersey, L"], ["Jerseys", "Long-Sleeve Logo Jersey, XL"], ["Road Frames", "HL Road Frame - Red, 62"], ["Road Frames", "HL Road Frame - Red, 44"], ["Road Frames", "HL Road Frame - Red, 48"], ["Road Frames", "HL Road Frame - Red, 52"], ["Road Frames", "HL Road Frame - Red, 56"], ["Road Frames", "LL Road Frame - Black, 58"], ["Road Frames", "LL Road Frame - Black, 60"], ["Road Frames", "LL Road Frame - Black, 62"]]'
 ```
 
 ## Usage
@@ -131,9 +131,9 @@ It returns random strings such as:
 BFAr#- lqkh?G9\S:{`OUg[P_E_[lML.:	$MxEEJcD6AHXk1StI76 Ox)?C@-qDAWY"hW'Tet:u\4 k8k>)7^qk
 ```
 
-### sqltest
+### sqlcontroller
 
 1. [Acquire API `_master` key](https://docs.microsoft.com/en-us/azure/azure-functions/functions-manually-run-non-http#get-the-functions-master-key) for your application
-1. `POST` to `/sqltest` with these headers:
+1. `POST` to `/sqlcontroller` with these headers:
     - `x-functions-key`: Your function's `_master` key
     - `Content-Type`: `application/json`
