@@ -10,7 +10,7 @@ autopep8 = "*"
 [packages]
 azure-functions = "*"
 python-dotenv = "*"
-pyodbc = "<=4.0.28"
+pyodbc = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.9"
