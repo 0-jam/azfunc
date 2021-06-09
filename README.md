@@ -6,27 +6,25 @@
 
 1. [Environment](#environment)
 1. [Installation](#installation)
+    1. [Installation (macOS with M1 chips)](#installation-macos-with-m1-chips)
 1. [Configuration](#configuration)
-   1. [Create application](#create-application)
-   1. [Setting environment variables for your application](#setting-environment-variables-for-your-application)
-   1. [Setting environment variables locally](#setting-environment-variables-locally)
-      1. [(Optional) Setting environment variables for Python interactive shell](#optional-setting-environment-variables-for-python-interactive-shell)
+    1. [Create application](#create-application)
+    1. [Setting environment variables for your application](#setting-environment-variables-for-your-application)
+    1. [Setting environment variables locally](#setting-environment-variables-locally)
+        1. [(Optional) Setting environment variables for Python interactive shell](#optional-setting-environment-variables-for-python-interactive-shell)
 1. [Usage](#usage)
-   1. [azmonkeygen](#azmonkeygen)
-   1. [sqltest](#sqltest)
+    1. [azmonkeygen](#azmonkeygen)
+    1. [sqltest](#sqltest)
 
 ---
 
 ## Environment
 
-- Python 3.7.6 via pyenv
-- Initialized local environment using pipenv
-- Arch Linux x86_64
-- Visual Studio Code 1.42.1
+- Python 3.9
 
 ## Installation
 
-1. Install pyenv and run `$ pyenv install 3.7.6`
+1. Install pyenv and run `$ pyenv install 3.9.5`
     - More information at [pypa/pyenv](https://github.com/pypa/pipenv)
 1. Set local Python version by running `$ pyenv local 3.7.6`
 1. Initialize pipenv with `$ pipenv --python $(which python)`
@@ -36,6 +34,12 @@
     - [Azure/azure-functions-core-tools#installing](https://github.com/Azure/azure-functions-core-tools#installing)
     - In Arch Linux, install `azure-functions-core-tools-bin` via AUR
 1. Install 'Azure Account', and 'Azure Functions' extensions in your VSCode
+
+### Installation (macOS with M1 chips)
+
+1. Install the latest Python from [python.org](https://www.python.org/downloads/mac-osx/)
+    - Building pyodbc currently (2021/06/09) fails on native M1 chips
+    - Click "macOS 64-bit Intel installer" to download Python which runs on Rosetta 2
 
 ## Configuration
 
